@@ -1,0 +1,34 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Category':'New Category'}}</h2>
+    <Form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="CATEGORY" required readonly="{{isEditMode? true:false}}"/>
+        <mat-error *ngIf="categoryForm.get('CATEGORY')?.invalid">
+          Code is Required (Max 4 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="CAT_DESC" required>
+        <mat-error *ngIf="categoryForm.get('CAT_DESC')?.invalid">
+          Description is Required (Max 30 characters).
+        </mat-error>
+      </mat-form-field>
+  
+   
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="categoryForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Category'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/categorylist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      
+

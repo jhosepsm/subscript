@@ -1,0 +1,97 @@
+<mat-toolbar  >
+    <div *ngIf="LoginStatus===true">
+     <button mat-icon-button *ngIf=" sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+  </div>
+  <img src="/images/logolog.fw.png"  width="120" height="40" alt="Logo Subscript">
+  <!-- <span>Subscriptor</span> -->
+ 
+   <span class="example-spacer"></span>
+   <button  mat-icon-button  [matMenuTriggerFor]="menu" #menuTrigger  class="button-login">
+     <mat-icon >person</mat-icon>
+     <!-- <span class=" span.login-text">{{userLogged}}</span> -->
+   </button>
+   <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openDialog()">
+      <mat-icon>key</mat-icon>
+      Change Password
+    </button>
+  </mat-menu>
+   <span class="login-text">  {{userLogged}}</span>
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
+   <span> <mat-icon>logout</mat-icon>
+   </span>  
+   </button>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav class="mat-elevation-z8"  > 
+      <mat-accordion class="app-nav-accordion">
+      <mat-nav-list>
+        <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/shell/home">
+          <mat-icon matListItemIcon>dashboard</mat-icon>
+         Dashboard
+        </mat-list-item>
+        <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/shell/depositlist">
+          <mat-icon matListItemIcon>money</mat-icon>
+          Deposit
+        </mat-list-item>
+        <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/shell/reports">
+          <mat-icon matListItemIcon>list</mat-icon>
+          Reports
+        </mat-list-item>
+        <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" routerLink="/shell/userlist">
+          <mat-icon matListItemIcon>User</mat-icon>
+          Users
+        </mat-list-item>
+      </mat-nav-list>
+        <!-- <mat-list-item  [matMenuTriggerFor]="menu"  (click)="sidenav.mode === 'over' && sidenav.toggle()" >
+          <mat-icon matListItemIcon>settings</mat-icon>
+          Parameters
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/shell/branchlist">Branches</button>
+            <button mat-menu-item routerLink="/shell/categorylist"  >Categories</button>
+            <button mat-menu-item routerLink="/shell/companylist" >Companies</button>
+            <button mat-menu-item routerLink="/shell/regionlist">Regions</button>
+            <button mat-menu-item routerLink="/shell/councilist">Councils</button>
+            <button mat-menu-item routerLink="/shell/schemelist">Schemes</button>
+          </mat-menu> -->
+
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title> 
+                 <mat-icon matListItemIcon >settings</mat-icon> &nbsp;&nbsp;
+                 Parameters&nbsp;
+                </mat-panel-title>
+            </mat-expansion-panel-header> 
+            <mat-nav-list>
+                <a mat-list-item routerLink="/shell/branchlist">
+                  <mat-icon>store</mat-icon>Branches</a>
+                <a mat-list-item routerLink="/shell/categorylist" >
+                  <mat-icon>filter</mat-icon> Categories</a>
+                <a mat-list-item routerLink="/shell/companylist" >
+                  <mat-icon> business</mat-icon> Companies</a>
+                <a mat-list-item routerLink="/shell/regionlist" >
+                  <mat-icon> edit_location</mat-icon>Regions</a>
+                <a mat-list-item routerLink="/shell/councilist" >
+                  <mat-icon>group</mat-icon>Councils</a>
+                <a mat-list-item routerLink="/shell/schemelist" >
+                  <mat-icon>view_quilt</mat-icon>Schemes</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+         
+       <!-- </mat-list-item> -->
+      <!-- </mat-nav-list> -->
+    </mat-accordion>
+    </mat-sidenav>
+
+   
+    <mat-sidenav-content class="mat-elevation-z8" >
+      <div class="content">
+       
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

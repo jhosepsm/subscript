@@ -1,0 +1,40 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Branch':'New Branch'}}</h2>
+    <Form [formGroup]="branchForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="BRCODE" required readonly="{{isEditMode? true:false}}"/>
+        <mat-error *ngIf="branchForm.get('BRCODE')?.invalid">
+          Code is Required (Max 3 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="BRDESC" required>
+        <mat-error *ngIf="branchForm.get('BRDESC')?.invalid">
+          Description is Required (Max 20 characters).
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Region</mat-label>
+        <mat-select formControlName="BRREGION" required>
+          <mat-option *ngFor="let region of regionData" [value]="region.RGCODE" >{{ region.RGDESC }}</mat-option>
+          <!-- <mat-option value="ADM">ADM</mat-option>
+          <mat-option value="USER">USER</mat-option> -->
+        </mat-select>
+     </mat-form-field>
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="branchForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Branch'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/branchlist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      

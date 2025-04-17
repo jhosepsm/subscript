@@ -1,0 +1,71 @@
+<mat-card>
+    <div class="title">    
+        &nbsp;&nbsp;  <img src="/images/imgchangePass.fw.png"  width="50" alt="">
+        &nbsp; <h2 >Change password</h2> &nbsp; 
+       &nbsp;&nbsp;
+    </div>
+  <br>
+    <Form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+        <!-- <mat-form-field class="full-width">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="USR_ID" required readonly="true"/>
+           
+          </mat-form-field> -->
+  
+      <mat-form-field class="full-width">
+        <mat-label>Login</mat-label>
+        <input matInput formControlName="USR_LOGIN" required readonly="true"/>
+       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="USR_NAME" required readonly="true">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="USR_LASTNAME" required readonly="true">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Current password</mat-label>
+        <input matInput formControlName="CURRENT_PASS" type="password" required >
+        <mat-error *ngIf="userForm.get('CURRENT_PASS')?.invalid">
+            Password is Required (Min 4-Max 15 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>New password</mat-label>
+        <input matInput formControlName="NEW_PASS" type="password" required >
+        <mat-error *ngIf="userForm.get('NEW_PASS')?.invalid">
+            New password is Required (Min 4-Max 15 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Confirm password</mat-label>
+        <input matInput formControlName="CONFIRM_PASS" type="password" required >
+        <mat-error *ngIf="userForm.get('CONFIRM_PASS')?.invalid">
+            Confirm is Required (Min 4-Max 15 characters).
+        </mat-error>
+      </mat-form-field>
+       <div *ngIf="userForm?.errors?.['mismatch'] && userForm.touched" class="error-valid">
+        New password & Confirmation must to match!!
+       </div>
+  
+       
+        <div class="form-actions">
+            <button mat-raised-button color="warn"  type="submit" [disabled]="userForm.invalid">
+             <mat-icon>save</mat-icon>
+                Save Changes
+            </button>
+            <button mat-raised-button color="warn"  (click)="onCancel()"  type="button">
+             <mat-icon>cancel</mat-icon>
+                Cancel
+            </button>
+        </div> 
+    </Form>
+  </mat-card>
+  <br> <br>
+
+

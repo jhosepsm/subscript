@@ -1,0 +1,55 @@
+<div >
+  <div   fxLayout="row" fxLayout.sm="row" fxLayout.xs="column" fxFlex="100%" fxLayoutAlign="center center">
+    <div class="divuno" fxFlex="40" fxFlex.sm="70" fxFlex.xs="70"  fxLayoutAlign="center center"> 
+      <img mat-card-image src="https://controversiascontinente.wordpress.com/wp-content/uploads/2013/11/gente-trabajando.jpg" alt="Photo people working">
+ 
+    </div>
+
+    <div  fxFlex="40" fxFlex.sm="70" fxFlex.xs="70"> 
+      <mat-card class="main-div">
+        <div class="img-login">
+        <img src="/images/logolog.fw.png" width="180" height="50" alt=""  >
+        </div>
+        <mat-card-content>
+           <div class="img-login-user">
+            <img src="/images/imguser.fw.png" width="75" alt=""> &nbsp;  
+           </div>
+            
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">  
+              <mat-form-field class="full-width">
+                <mat-label>Login</mat-label>
+                <input matInput formControlName="USR_LOGIN" required />
+                <mat-error *ngIf="loginForm.get('USR_LOGIN')?.invalid">
+                  Login is Required (Max 20 characters).
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="USR_PASS" required type="password"/>
+                <mat-error *ngIf="loginForm.get('USR_PASS')?.invalid">
+                  Password is Required (Max 15 characters).
+                </mat-error>
+              </mat-form-field>
+            
+              <div class="form-actions">
+                <button mat-raised-button color="warn"  type="submit" [disabled]="loginForm.invalid">
+                  <mat-icon>save</mat-icon>
+                 Login
+               </button>
+               
+              </div> 
+    
+            </form>
+        </mat-card-content>
+    
+    </mat-card>
+  
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

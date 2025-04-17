@@ -1,0 +1,19 @@
+.title{
+    background-color: rgb(21, 21, 70);
+    color: rgb(216, 196, 235);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex; /*Convertimos al menú en flexbox*/
+    align-content:center; /*Con esto le indicamos que margine todos los items que se encuentra adentro hacia la derecha e izquierda*/
+    align-items: center; /*con esto alineamos de manera vertical*/
+}
+.error-valid{
+    color: darkred;
+    font-style: italic;
+    border-color: red;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: chartreuse;
+    width: 350px;
+    padding-left: 15px;
+    margin-left: 10 px;
+}

@@ -1,0 +1,146 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Company':'New Company'}}</h2>
+    <Form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="COCODE"  readonly="true"/>
+        <mat-error *ngIf="companyForm.get('COCODE')?.invalid">
+          Code is Required (Max 5 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="CODESC" required>
+        <mat-error *ngIf="companyForm.get('CODESC')?.invalid">
+          Description is Required (Max 20 characters).
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Scheme</mat-label>
+        <mat-select formControlName="COSCHEME" required>
+          <mat-option *ngFor="let scheme of schemeData" [value]="scheme.SCHEME" >{{ scheme.SCDESC }}</mat-option>
+          <!-- <mat-option value="ADM">ADM</mat-option>
+          <mat-option value="USER">USER</mat-option> -->
+        </mat-select>
+     </mat-form-field>
+
+     <mat-form-field class="full-width">
+        <mat-label>Branch</mat-label>
+        <mat-select formControlName="COBRANCH" required>
+          <mat-option *ngFor="let branch of branchData" [value]="branch.BRCODE" >{{ branch.BRDESC }}</mat-option>
+          <!-- <mat-option value="ADM">ADM</mat-option>
+          <mat-option value="USER">USER</mat-option> -->
+        </mat-select>
+     </mat-form-field>
+
+     <mat-form-field class="full-width">
+        <mat-label>Postal Address</mat-label>
+        <input matInput formControlName="POSTCODE" required>
+        <mat-error *ngIf="companyForm.get('POSTCODE')?.invalid">
+          Post Code is Required (Max 4 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Street Address</mat-label>
+        <input matInput formControlName="ADDR1" required>
+        <mat-error *ngIf="companyForm.get('ADDR1')?.invalid">
+          Street Address is Required (Max 30 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Telephone</mat-label>
+        <input matInput formControlName="TELEPHONE" required>
+        <mat-error *ngIf="companyForm.get('TELEPHONE')?.invalid">
+          Phone is Required (Max 12 characters).
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Fax</mat-label>
+        <input matInput formControlName="FAX" >
+        <mat-error *ngIf="companyForm.get('FAX')?.invalid">
+          FAX is Required (Max 12 characters).
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Contact</mat-label>
+        <input matInput formControlName="CONTACT" required>
+        <mat-error *ngIf="companyForm.get('CONTACT')?.invalid">
+          CONTACT is Required (Max 25 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Company Status</mat-label>
+        <mat-select formControlName="STATUS" required>
+           <mat-option value="Open">OPEN</mat-option>
+            <mat-option value="Clse">CLOSE</mat-option>
+        </mat-select>
+        <mat-error *ngIf="companyForm.get('STATUS')?.invalid">
+            STATUS is Required (Max 4 characters).
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="full-width">
+        <mat-label>General</mat-label>
+        <mat-select formControlName="GENERAL" >
+           <mat-option value="GEN">GEN</mat-option>
+           <mat-option value="BUR">BUR</mat-option>
+           <mat-option value="NMB">NMB</mat-option>
+           <mat-option value="LIQ">LIQ</mat-option>
+        </mat-select>
+        <mat-error *ngIf="companyForm.get('GENERAL')?.invalid">
+            GENERAL is Required (Max 4 characters).
+        </mat-error>
+      </mat-form-field>
+    
+    <mat-form-field class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="CATEGORY" required>
+          <mat-option *ngFor="let category of categoryData" [value]="category.CATEGORY" >{{ category.CAT_DESC }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="companyForm.get('CATEGORY')?.invalid">
+            CATEGORY is Required (Max 4 characters).
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Bargaining Council</mat-label>
+        <mat-select formControlName="CNCL_YN" >
+           <mat-option value=1>YES</mat-option>
+           <mat-option value=0>NO</mat-option>
+        </mat-select>
+   
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Shop Steward</mat-label>
+        <input matInput formControlName="STEWARD" >
+        <mat-error *ngIf="companyForm.get('STEWARD')?.invalid">
+          (Max 30 characters).
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Manager</mat-label>
+        <input matInput formControlName="MANAGER" >
+        <mat-error *ngIf="companyForm.get('MANAGER')?.invalid">
+          (Max 30 characters).
+        </mat-error>
+      </mat-form-field>
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="companyForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Company'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/companylist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      
+

@@ -1,0 +1,80 @@
+<mat-card>
+  <h2>{{isEditMode?'Edit User':'New User'}}</h2>
+  <Form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="full-width">
+      <mat-label>Login</mat-label>
+      <input matInput formControlName="USR_LOGIN" required readonly="{{isEditMode? true:false}}"/>
+      <mat-error *ngIf="userForm.get('USR_LOGIN')?.invalid">
+        Login is Required (Max 30 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>User Rol</mat-label>
+      <mat-select formControlName="USR_ROL" required>
+        <mat-option value="ADM">ADM</mat-option>
+        <mat-option value="USER">USER</mat-option>
+      </mat-select>
+      <mat-error *ngIf="userForm.get('USR_ROL')?.invalid">
+        Rol is Required (Max 30 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="USR_NAME" required>
+      <mat-error *ngIf="userForm.get('USR_NAME')?.invalid">
+        Name is Required (Max 25 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="USR_LASTNAME" required>
+      <mat-error *ngIf="userForm.get('USR_LASTNAME')?.invalid">
+        Last Name is Required (Max 35 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Mobil</mat-label>
+      <input matInput formControlName="USR_MOBIL" required>
+      <mat-error *ngIf="userForm.get('USR_MOBIL')?.invalid">
+        Mobil is Required (Max 15 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="USR_EMAIL" required>
+      <mat-error *ngIf="userForm.get('USR_EMAIL')?.invalid">
+        Email is Required (Max 35 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Address</mat-label>
+      <textarea matinput matInput formControlName="USR_ADDRESS" required>
+      <mat-error *ngIf="userForm.get('USR_ADDRESS')?.invalid">
+        Address is Required (Max 120 characters).
+      </mat-error>
+      </textarea>
+    </mat-form-field>
+
+<div class="form-actions">
+  <button mat-raised-button color="warn"  type="submit" [disabled]="userForm.invalid">
+    <mat-icon>save</mat-icon>
+    {{isEditMode? 'Save Changes':'Add User'}}
+ </button>
+  <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/userlist'])"  type="button">
+    <mat-icon>clear</mat-icon>
+   Cancel
+  </button>
+</div> 
+  </Form>
+</mat-card>
+    
+     
+
+  

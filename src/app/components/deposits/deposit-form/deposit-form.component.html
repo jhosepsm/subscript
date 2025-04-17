@@ -1,0 +1,129 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Deposit':'New Deposit'}}</h2>
+    <Form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="full-width">
+            <mat-label>Company</mat-label>
+            <mat-select formControlName="COMPANY" required>
+              <mat-option *ngFor="let company of companyData" [value]="company.COCODE" >{{ company.CODESC }}</mat-option>
+              <!-- <mat-option value="ADM">ADM</mat-option>
+              <mat-option value="USER">USER</mat-option> -->
+            </mat-select>
+     </mat-form-field>
+     <mat-form-field class="full-width">
+        <mat-label>Branch</mat-label>
+        <mat-select formControlName="BRANCH" required>
+          <mat-option *ngFor="let branch of branchData" [value]="branch.BRCODE" >{{ branch.BRDESC }}</mat-option>
+          <!-- <mat-option value="ADM">ADM</mat-option>
+          <mat-option value="USER">USER</mat-option> -->
+        </mat-select>
+     </mat-form-field>
+     <mat-form-field class="full-width">
+        <mat-label>Scheme</mat-label>
+        <mat-select formControlName="COSCHEME" >
+          <mat-option *ngFor="let scheme of schemeData" [value]="scheme.SCHEME" >{{ scheme.SCDESC }}</mat-option>
+          <!-- <mat-option value="ADM">ADM</mat-option>
+          <mat-option value="USER">USER</mat-option> -->
+        </mat-select>
+     </mat-form-field>
+  
+      
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="DEPDATE" >
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <br>
+      <mat-form-field class="full-width">
+        <mat-label>Month</mat-label>
+        <input matInput formControlName="MONTH"   type="number" required>
+        <mat-error *ngIf="depositForm.get('MONTH')?.invalid">
+          Month is Required .
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Year</mat-label>
+        <input matInput formControlName="YEAR"  type="number" required>
+        <mat-error *ngIf="depositForm.get('YEAR')?.invalid">
+          Year is Required .
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Page</mat-label>
+        <input matInput formControlName="PAGE"  type="number" required>
+        <mat-error *ngIf="depositForm.get('PAGE')?.invalid">
+          Page is Required .
+        </mat-error>
+      </mat-form-field>
+     <br>
+      <mat-form-field class="full-width">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="AMOUNT"  type="number" step='any' required>
+        <mat-error *ngIf="depositForm.get('AMOUNT')?.invalid">
+          Amount is Required .
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label># Weeks</mat-label>
+        <input matInput formControlName="WEEK"  type="number" step='any' >
+        <mat-error *ngIf="depositForm.get('WEEK')?.invalid">
+          Nb Weeks is Required .
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="full-width">
+        <mat-label>Company contribution</mat-label>
+        <input matInput formControlName="CO_BURS"   type="number" step='any' required>
+        <mat-error *ngIf="depositForm.get('CO_BURS')?.invalid">
+          CONTACT is Required (Max 25 characters).
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Employees contribution</mat-label>
+        <input matInput formControlName="EMP_BURS"  type="number" step='any' required>
+        <mat-error *ngIf="depositForm.get('EMP_BURS')?.invalid">
+            Empl. contribution is Required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Agency</mat-label>
+        <input matInput formControlName="AGENCY"  type="number" step='any' >
+        <mat-error *ngIf="depositForm.get('AGENCY')?.invalid">
+          Agency is required .
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <h3>Company in short </h3>
+      <mat-form-field class="full-width">
+        <mat-label>Company Contrib. Sick</mat-label>
+        <input matInput formControlName="DEPSUBS"  type="number" step='any' required>
+        <mat-error *ngIf="depositForm.get('DEPSUBS')?.invalid">
+          Company Contrib. is required .
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>HIV/AIDS Levy Contrib</mat-label>
+        <input matInput formControlName="AIDS"  type="number" step='any' required>
+        <mat-error *ngIf="depositForm.get('AIDS')?.invalid">
+          Company Contrib. is required .
+        </mat-error>
+      </mat-form-field>
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="depositForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Deposit'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/depositlist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      
+
+

@@ -1,0 +1,34 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Region':'New Region'}}</h2>
+    <Form [formGroup]="regionForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="RGCODE" required readonly="{{isEditMode? true:false}}"/>
+        <mat-error *ngIf="regionForm.get('RGCODE')?.invalid">
+          Code is Required (Max 3 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="RGDESC" required>
+        <mat-error *ngIf="regionForm.get('RGDESC')?.invalid">
+          Description is Required (Max 20 characters).
+        </mat-error>
+      </mat-form-field>
+  
+   
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="regionForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Region'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/regionlist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      
+

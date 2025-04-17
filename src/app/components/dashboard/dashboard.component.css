@@ -1,0 +1,41 @@
+.principal{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+    align-items:start;
+    
+   
+    
+    }
+    
+    .divuno{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(105, 105, 182);
+    border-width: thin;
+    margin: 10px;
+    padding: 5px;
+    
+    
+    }
+
+
+    .divcard{
+        border-style: solid;
+        border-radius: 10px;
+        border-color: rgb(85, 97, 221);
+        border-width: 2px;
+        margin: 10px;
+        padding: 5px;
+        background-color: rgb(67, 31, 145);
+        text-align: center;
+        color: rgb(220, 219, 231);
+        font-size: 23px;
+        font-family: 'Times New Roman', Times, serif;
+        
+        
+        }
+    
+  

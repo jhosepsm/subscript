@@ -1,0 +1,40 @@
+<div   fxLayout="column" fxLayout.sm="column" fxLayout.xs="column">
+  <mat-form-field class="full-width">
+    <mat-label>Year</mat-label>
+    <mat-select  (openedChange)="selectYear($event)"
+    [(value)]="yearsel"  >
+       <mat-option value="2022">2022</mat-option>
+       <mat-option value="2023">2023</mat-option>
+       <mat-option value="2024">2024</mat-option>
+       <mat-option value="2025">2025</mat-option>
+    </mat-select>
+    
+  </mat-form-field>
+<div   fxLayout="row" fxLayout.sm="row" fxLayout.xs="column">
+ <div class="divuno" fxFlex="50" fxFlex.sm="70" fxFlex.xs="70"> 
+    <canvas id="chart">{{chart}}</canvas>
+ </div>
+  <div  class="divuno" fxFlex="50" fxFlex.sm="30" fxFlex.xs="30"> 
+   <canvas id="chart02">{{chart02}}</canvas>
+  </div>
+</div>
+<div fxLayout="column" fxLayout.xs="column" fxFlex="17" fxFlex.sm="10" fxFlex.xs="10">
+    <div   fxLayout="row" fxLayout.sm="row" fxLayout.xs="column">
+        <div class="divuno" fxFlex="50" fxFlex.sm="70" fxFlex.xs="70"> 
+            <canvas id="chart03">{{chart03}}</canvas>
+        </div>
+         <div  class="divuno" fxFlex="50" fxFlex.sm="30" fxFlex.xs="30"> 
+
+            <div   fxLayout="row" fxLayout.sm="row" fxLayout.xs="column">
+                <div class="divcard" fxFlex="50" fxFlex.sm="70" fxFlex.xs="70"> 
+                     <h4> Deposits: {{nbdepo}}</h4>
+                </div>
+                 <div  class="divcard" fxFlex="50" fxFlex.sm="30" fxFlex.xs="30"> 
+                    <h4> Total: {{totaldepo}}</h4>
+                 </div>
+               </div>
+         
+         </div>
+     </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<mat-card>
+    <h2>{{isEditMode?'Edit Scheme':'New Scheme'}}</h2>
+    <Form [formGroup]="schemeForm" (ngSubmit)="onSubmit()">
+  
+      <mat-form-field class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="SCHEME" required readonly="{{isEditMode? true:false}}"/>
+        <mat-error *ngIf="schemeForm.get('SCHEME')?.invalid">
+          Code is Required (Max 2 characters).
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="SCDESC" required>
+        <mat-error *ngIf="schemeForm.get('SCDESC')?.invalid">
+          Description is Required (Max 20 characters).
+        </mat-error>
+      </mat-form-field>
+  
+   
+    
+  <div class="form-actions">
+    <button mat-raised-button color="warn"  type="submit" [disabled]="schemeForm.invalid">
+     {{isEditMode? 'Save Changes':'Add Scheme'}}
+    </button>
+    <button mat-raised-button color="warn"  (click)="router.navigate(['/shell/schemelist'])"  type="button">
+     Cancel
+    </button>
+  </div> 
+    </Form>
+  </mat-card>
+      
+
